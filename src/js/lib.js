@@ -1,3 +1,4 @@
+const islands = require('../json/islands.json');
 const regions = require('../json/regions.json');
 const provinces = require('../json/provinces.json');
 const city_mun = require('../json/city-mun.json');
@@ -5,10 +6,18 @@ const brgy = require('../json/barangays.json');
 
 
 let lib = {
+  islands: islands,
   regions: regions,
   provinces: provinces,
   city_mun: city_mun,
   barangays: brgy,
+
+  getProvincesByIsland: (island_code) => {
+    return provinces.filter((val, i) => {
+      return val.island_code == island_code;
+    })
+
+  },
 
   // get all provinces in selected region
   getProvincesByRegion: (region_code) => {
